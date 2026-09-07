@@ -47,7 +47,6 @@ function App() {
       <div
         style={{
           display: "flex",
-          gap: "20px",
           flexDirection: "row !important",
           justifyContent: "space-around",
         }}

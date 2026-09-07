@@ -11,7 +11,7 @@ export default function Table({ columns, data, striped = false }: TableProps) {
         width: "100%",
         borderCollapse: "collapse",
         fontFamily: "'Inter', sans-serif",
-        fontSize: "14px",
+        fontSize: "16px",
         background: "#FFFFFF",
         border: "1px solid #E4E0D6",
         borderRadius: "8px",

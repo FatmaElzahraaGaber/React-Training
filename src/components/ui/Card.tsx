@@ -69,7 +69,7 @@ export default function Card({
         {children && (
           <div
             style={{
-              marginTop: "8px",
+              marginTop: "10px",
               borderTop: "1px solid #EDEAE2",
               paddingTop: "12px",
             }}

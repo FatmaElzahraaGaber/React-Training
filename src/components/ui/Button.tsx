@@ -14,7 +14,7 @@ export default function Button({
     fontSize: "14px",
     fontWeight: 600,
     letterSpacing: "0.01em",
-    padding: "11px 22px",
+    padding: "10px 22px",
     borderRadius: "8px",
     border: "1.5px solid transparent",
     cursor: disabled ? "not-allowed" : "pointer",
