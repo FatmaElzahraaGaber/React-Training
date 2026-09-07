@@ -1,121 +1,92 @@
 import { useState } from "react";
-import heroImg from "./assets/hero.png";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
+import Button from "/src/components/ui/Button.tsx";
+import Card from "/src/components/ui/Card.tsx";
+import Table from "/src/components/ui/Table.tsx";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [saving, setSaving] = useState(false);
 
+  const handleSave = () => {
+    setSaving(true);
+    setTimeout(() => {
+      setSaving(false);
+    }, 500);
+  };
+  const columns = ["Name", "Role", "City"];
+
+  const students = [
+    { name: "Layla Hassan", role: "Student", city: "Cairo" },
+    { name: "Omar Farouk", role: "Student", city: "Giza" },
+    { name: "Sara Ahmed", role: "Teaching Assistant", city: "Alexandria" },
+    { name: "Youssef Nabil", role: "Student", city: "Aswan" },
+  ];
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logoo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+    <div
+      style={{
+        minHeight: "260px",
+        background: "#F4F1EA",
+        padding: "40px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "22px",
+        fontFamily: "'Inter', sans-serif",
+      }}
+    >
+      <div>
+        <h1
+          style={{
+            color: "#1F1B16",
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: "50px",
+          }}
         >
-          Count is {count}
-        </button>
-      </section>
+          Assignment 2
+        </h1>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          flexDirection: "row !important",
+          justifyContent: "space-around",
+        }}
+      >
+        <Card
+          title="Desert Trail Map"
+          description="A downloadable route covering the full 12km loop, with elevation notes."
+          image="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=300&fit=crop"
+        />
+        <Card
+          title="Desert Trail Map"
+          description="A downloadable route covering the full 12km loop, with elevation notes."
+        >
+          <Button
+            text="Loading…"
+            onClick={() => {
+              alert("!s");
+            }}
+            variant="danger"
+            disabled={true}
+          />
+        </Card>
 
-      <div className="ticks"></div>
+        <Card
+          title="Weekly Newsletter"
+          description="Short dispatches on design and craft, sent every Friday morning."
+          image="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=300&fit=crop"
+        >
+          <Button
+            text={saving ? "Loading…" : " Subscribe"}
+            onClick={handleSave}
+            variant="primary "
+            disabled={saving}
+          />
+        </Card>
+      </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <Table columns={columns} data={students} striped />
+    </div>
   );
 }
 
